@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IQ тест</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(45deg, #f9d423, #f37121, #c2185b, #651f81);
+            background-size: 600% 600%;
+            animation: gradientBG 10s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 56px;
+            text-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        form {
+            width: 80%;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button[type="submit"] {
+            margin-top: 20px;
+            background-color: #f37121;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+        }
+
+            button[type="submit"]:hover {
+                transform: scale(1.1);
+                box-shadow: 4px 4px 4px rgba(0,0,0,0.4);
+                background-color: #c2185b;
+            }
+
+        #score {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 48px;
+            text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 24px;
+            color: #f37121;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #333;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>IQ тест</h1>
+    <form id="quizForm">
+        <h2>Вопрос 1</h2>
+        <p>Какая планета находится ближе всего к Солнцу?</p>
+        <label><input type="radio" name="q1" value="a"> Марс</label><br>
+        <label><input type="radio" name="q1" value="b"> Тимофей</label><br>
+        <label><input type="radio" name="q1" value="c"> Земля</label><br>
+        <label><input type="radio" name="q1" value="d"> Меркурий</label><br>
+
+        <h2>Вопрос 2</h2>
+        <p>Сколько обычно зубов у взрослого человека?</p>
+        <label><input type="radio" name="q2" value="a"> 0</label><br>
+        <label><input type="radio" name="q2" value="b"> 24</label><br>
+        <label><input type="radio" name="q2" value="c"> 32</label><br>
+        <label><input type="radio" name="q2" value="d"> 36</label><br>
+
+        <button type="submit">Ответить</button>
+    </form>
+
+    <div id="score"></div>
+
+    <script>
+        const quizForm = document.getElementById('quizForm');
+        const scoreDiv = document.getElementById('score');
+
+        quizForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const q1 = document.querySelector('input[name="q1"]:checked').value;
+            const q2 = document.querySelector('input[name="q2"]:checked').value;
+
+            let score = 0;
+
+            if (q1 === 'd') {
+                score++;
+            }
+
+            if (q2 === 'c') {
+                score++;
+            }
+
+            scoreDiv.innerHTML = 'Вы набрали ' + score + ' баллов из 2';
+        });
+    </script>
+</body>
+</html>
+
